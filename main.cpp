@@ -1,26 +1,35 @@
 #include <iostream>
-#include <vector>  // 引入 vector 容器
 #include <string>
 
-int main() {
-    // 1. 创建动态数组（以前 C 语言里得写 int arr[100]）
-    std::vector<int> scores = {60, 80, 95};
-    
-    // 2. 随时添加元素（不用管数组会不会越界）
-    scores.push_back(100);
-    scores.push_back(75);
-    
-    // 3. 自动计算当前长度（不用自己写变量记录）
-    std::cout << "当前一共有 " << scores.size() << " 个分数\n";
-    
-    // 4. C++ 独有的极简遍历方式（范围 for 循环）
-    int sum = 0;
-    for (int s : scores) {
-        std::cout << "分数: " << s << "\n";
-        sum += s;
+// 定义一个类：装甲板 (Armor)
+class Armor {
+public:
+    // 属性（成员变量）
+    std::string color;  // 颜色
+    int x;              // 横坐标
+    int y;              // 纵坐标
+
+    // 行为（成员函数）：计算它距离中心的距离
+    int getDistance() {
+        // 简单的数学计算模拟
+        return x * x + y * y; 
     }
+
+    // 构造函数：创建对象时自动运行
+    Armor(std::string c, int start_x, int start_y) {
+        color = c;
+        x = start_x;
+        y = start_y;
+        std::cout << "发现一个" << color << "色的装甲板！\n";
+    }
+};
+
+int main() {
+    // 实例化（创建一个对象）
+    Armor myTarget("红", 3, 4);
     
-    std::cout << "总分: " << sum << "\n";
+    std::cout << "坐标: (" << myTarget.x << ", " << myTarget.y << ")\n";
+    std::cout << "距离平方: " << myTarget.getDistance() << "\n";
 
     return 0;
 }
