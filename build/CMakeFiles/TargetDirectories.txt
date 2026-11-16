@@ -1,3 +1,0 @@
-/home/lenovo/rm_vision/build/CMakeFiles/my_vision_app.dir
-/home/lenovo/rm_vision/build/CMakeFiles/edit_cache.dir
-/home/lenovo/rm_vision/build/CMakeFiles/rebuild_cache.dir
