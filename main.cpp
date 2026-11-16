@@ -1,35 +1,39 @@
 #include <iostream>
 #include <string>
 
-// 定义一个类：装甲板 (Armor)
 class Armor {
+private:
+    // 私有数据：把装甲板的坐标藏起来，不许外面的人乱改
+    int x; 
+    int y;
+
 public:
-    // 属性（成员变量）
-    std::string color;  // 颜色
-    int x;              // 横坐标
-    int y;              // 纵坐标
-
-    // 行为（成员函数）：计算它距离中心的距离
-    int getDistance() {
-        // 简单的数学计算模拟
-        return x * x + y * y; 
-    }
-
-    // 构造函数：创建对象时自动运行
-    Armor(std::string c, int start_x, int start_y) {
-        color = c;
+    // 构造函数（公开）
+    Armor(int start_x, int start_y) {
         x = start_x;
         y = start_y;
-        std::cout << "发现一个" << color << "色的装甲板！\n";
     }
+
+    // 公开函数：提供一个安全修改坐标的方法
+    void moveTo(int new_x, int new_y) {
+        x = new_x;
+        y = new_y;
+        std::cout << "装甲板移动到了: (" << x << ", " << y << ")\n";
+    }
+
+    // 公开函数：只让外面看，不让外面改
+    int getX() { return x; }
+    int getY() { return y; }
 };
 
 int main() {
-    // 实例化（创建一个对象）
-    Armor myTarget("红", 3, 4);
+    Armor target(3, 4);
     
-    std::cout << "坐标: (" << myTarget.x << ", " << myTarget.y << ")\n";
-    std::cout << "距离平方: " << myTarget.getDistance() << "\n";
-
+    // target.x = 10; // ❌ 报错！因为 x 是 private，外面摸不到。
+    
+    target.moveTo(10, 20); // ✅ 只能通过公开的函数去改，安全！
+    
+    std::cout << "x坐标是: " << target.getX() << "\n";
+    
     return 0;
 }
