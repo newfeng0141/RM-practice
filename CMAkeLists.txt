@@ -1,0 +1,3 @@
+cmak_minimum_required(VESION 3.10)
+project(MyVisionProject)
+add_executable(my_vision_app main.cpp)
